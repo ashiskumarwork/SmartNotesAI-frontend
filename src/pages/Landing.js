@@ -26,22 +26,36 @@ function Landing() {
       <div
         style={{
           background: "#fff",
-          borderRadius: 22,
+          borderRadius: 28,
           boxShadow: "0 8px 32px rgba(44,62,80,0.13)",
-          padding: "2.7rem 2.2rem 2.2rem 2.2rem",
+          padding: "3.5rem 2.5rem 3rem 2.5rem",
           maxWidth: 520,
           width: "100%",
           margin: "2.5rem 0 1.5rem 0",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          animation: "fadeIn 0.7s",
+          justifyContent: "center",
+          gap: 24,
+          minHeight: 420,
         }}
       >
         {/* Simple Illustration */}
-        <div style={{ marginBottom: 18 }}>
+        <div
+          style={{
+            background: "linear-gradient(135deg, #60a5fa 0%, #2563eb 100%)",
+            borderRadius: "50%",
+            width: 70,
+            height: 70,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 0,
+            boxShadow: "0 2px 8px rgba(44,62,80,0.10)",
+          }}
+        >
           <span
-            style={{ fontSize: 54, color: "#2563eb" }}
+            style={{ fontSize: 38, color: "#fff" }}
             role="img"
             aria-label="notes"
           >
@@ -53,26 +67,31 @@ function Landing() {
             color: "#2563eb",
             fontWeight: 800,
             fontSize: 32,
-            marginBottom: 12,
+            margin: 0,
             letterSpacing: 0.5,
+            textAlign: "center",
+            lineHeight: 1.2,
+            textShadow: "0 2px 8px rgba(44,62,80,0.07)",
           }}
         >
-          AI Notes Beautifier & Summarizer
+          AI Notes Beautifier &<br />
+          Summarizer
         </h1>
         <p
           style={{
             color: "#2d3e50",
             fontSize: 18,
-            marginBottom: 28,
+            margin: 0,
             textAlign: "center",
             lineHeight: 1.6,
+            fontWeight: 500,
           }}
         >
           Instantly turn your rough class notes into beautiful, organized, and
           summarized study material with the power of AI. Save, access, and
           review your notes anytime, anywhere.
         </p>
-        <div style={{ display: "flex", gap: 18, marginBottom: 10 }}>
+        <div style={{ display: "flex", gap: 18, marginTop: 10 }}>
           {user ? (
             <button
               onClick={() => navigate("/app")}
