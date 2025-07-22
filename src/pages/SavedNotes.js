@@ -21,7 +21,7 @@ function SavedNotesPage() {
       setError("");
       try {
         const res = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}/api/notes`
+          `${process.env.REACT_APP_BACKEND_URL}/api/notes`
         );
         const data = await res.json();
         if (data.success) {

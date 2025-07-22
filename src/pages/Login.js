@@ -30,7 +30,7 @@ function Login() {
     setLoading(true);
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/auth/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

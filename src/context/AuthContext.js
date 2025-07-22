@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
       if (token) {
         try {
           const res = await fetch(
-            `${import.meta.env.VITE_BACKEND_URL}/api/auth/me`,
+            `${process.env.REACT_APP_BACKEND_URL}/api/auth/me`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }

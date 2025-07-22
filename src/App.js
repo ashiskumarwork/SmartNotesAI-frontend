@@ -6,7 +6,8 @@
 import React, { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HomePage from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import Landing from "./pages/Landing";
 import SavedNotesPage from "./pages/SavedNotes";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -35,11 +36,12 @@ function App() {
       <Navbar />
       <div className="main-content">
         <Routes>
+          <Route path="/" element={<Landing />} />
           <Route
-            path="/"
+            path="/dashboard"
             element={
               <ProtectedRoute>
-                <HomePage />
+                <Dashboard />
               </ProtectedRoute>
             }
           />

@@ -29,10 +29,13 @@ function Navbar() {
           AI Notes Beautifier
         </Link>
         <div className="navbar-links">
+          <Link to="/" className="navbar-link">
+            Home
+          </Link>
           {user && (
             <>
-              <Link to="/" className="navbar-link">
-                Home
+              <Link to="/dashboard" className="navbar-link">
+                Dashboard
               </Link>
               <Link to="/saved" className="navbar-link">
                 Saved Notes

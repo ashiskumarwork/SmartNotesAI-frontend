@@ -1,18 +1,17 @@
-/**
- * Home.js
- * Home page for beautifying, summarizing, and saving notes.
- * Handles all user input and API interactions for note processing.
- */
+// Dashboard.js
+// Main dashboard page for beautifying, summarizing, and saving notes.
+// Handles all user input and API interactions for note processing.
 
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import ReactMarkdown from "react-markdown";
 
 /**
- * HomePage
- * Main page for pasting raw notes, beautifying, summarizing, and saving them.
+ * Dashboard.js
+ * Main dashboard page for beautifying, summarizing, and saving notes.
+ * Handles all user input and API interactions for note processing.
  */
-function HomePage() {
+function Dashboard() {
   // State for user input and results
   const [rawNotes, setRawNotes] = useState("");
   const [beautifiedNotes, setBeautifiedNotes] = useState("");
@@ -34,7 +33,7 @@ function HomePage() {
     try {
       // Step 1: Beautify
       const beautifyRes = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/beautify`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/beautify`,
         {
           method: "POST",
           headers: {
@@ -56,7 +55,7 @@ function HomePage() {
 
       // Step 2: Summarize
       const summarizeRes = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/api/summarize`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/summarize`,
         {
           method: "POST",
           headers: {
@@ -90,7 +89,7 @@ function HomePage() {
     setLoading(true);
     setMessage("");
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/save`, {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/save`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -343,4 +342,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default Dashboard;
