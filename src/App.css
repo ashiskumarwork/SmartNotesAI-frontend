@@ -1,38 +1,264 @@
-.App {
-  text-align: center;
-}
+/*
+ * App.css
+ * Student-level, visually appealing, clean UI for AI Notes Beautifier & Summarizer.
+ */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(120deg, #e3eafc 0%, #f6f8fb 100%);
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
+  line-height: 1.7;
+}
+
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 2.5rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.home-container,
+.saved-notes-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(44, 62, 80, 0.13);
+  padding: 2.5rem 2rem 2.7rem 2rem;
+  margin-bottom: 2.2rem;
+  border: 1.5px solid #dbeafe;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.7s;
 }
 
-@keyframes App-logo-spin {
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: none;
+  }
+}
+
+h2,
+h3,
+h4 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+h2 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #dbeafe;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
+  color: #2563eb;
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+h3 {
+  font-size: 1.22rem;
+  color: #2563eb;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+h4 {
+  font-size: 1.08rem;
+  color: #3a4a5d;
+  margin-bottom: 0.5rem;
+}
+
+.section-divider {
+  border: none;
+  border-top: 1.5px solid #dbeafe;
+  margin: 1.5rem 0 1.2rem 0;
+}
+
+.notes-textarea {
+  width: 98%;
+  min-height: 180px;
+  font-size: 1.09rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1.7px solid #93c5fd;
+  margin-bottom: 1.7rem;
+  resize: vertical;
+  background: #f1f5fe;
+  transition: border 0.2s, background 0.2s;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+.notes-textarea:focus {
+  border: 1.7px solid #2563eb;
+  outline: none;
+  background: #fff;
+}
+
+.button-group {
+  margin: 1.5rem 0 1.2rem 0;
+  display: flex;
+  gap: 0.7rem;
+  width: 98%;
+  justify-content: center;
+}
+button {
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 1.7rem;
+  font-size: 1.12rem;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.18s, box-shadow 0.18s, transform 0.12s, opacity 0.18s;
+  width: 100%;
+  max-width: 340px;
+  opacity: 0.97;
+}
+button:disabled {
+  background: #bfc9d1;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+}
+button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #1d4ed8 0%, #3b82f6 100%);
+  box-shadow: 0 6px 18px rgba(44, 62, 80, 0.13);
+  transform: translateY(-2px) scale(1.03);
+  opacity: 1;
+}
+button:active:not(:disabled) {
+  background: #22304a;
+  transform: scale(0.98);
+}
+
+.beautified-section,
+.summary-section {
+  margin-top: 2.1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.summary-box {
+  background: linear-gradient(120deg, #f1f5fe 0%, #e0e7ff 100%);
+  border-radius: 12px;
+  padding: 1.3rem 1.2rem 1.3rem 1.2rem;
+  margin-bottom: 1.2rem;
+  white-space: pre-line;
+  border: 1.5px solid #dbeafe;
+  font-size: 1.09rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.7s;
+}
+.takeaways-list {
+  margin: 0.5rem 0 1.1rem 1.2rem;
+  padding-left: 1.1rem;
+}
+.takeaways-list li {
+  margin-bottom: 0.3rem;
+  font-size: 1.06rem;
+}
+.message {
+  color: #1a7f37;
+  margin-top: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+}
+.error-message {
+  color: #c0392b;
+  margin-top: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+}
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+  align-items: center;
+}
+.note-card {
+  background: linear-gradient(120deg, #f1f5fe 0%, #e0e7ff 100%);
+  border-radius: 12px;
+  padding: 1.3rem 1.1rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+  border: 1.5px solid #dbeafe;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.7s;
+}
+.note-meta {
+  font-size: 1.01rem;
+  color: #6c7a89;
+  margin-bottom: 0.5rem;
+}
+.note-section {
+  margin-bottom: 0.8rem;
+}
+.note-raw,
+.note-beautified,
+.note-summary {
+  background: #fff;
+  border-radius: 7px;
+  padding: 0.8rem;
+  margin-top: 0.2rem;
+  font-size: 1.07rem;
+  white-space: pre-line;
+  border: 1px solid #dbeafe;
+}
+.note-takeaways {
+  margin: 0.3rem 0 0 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 0.7rem 0.2rem;
+  }
+  .home-container,
+  .saved-notes-container {
+    padding: 1.1rem 0.5rem 1.5rem 0.5rem;
+    max-width: 98vw;
+  }
+  h2 {
+    font-size: 1.2rem;
+    padding-bottom: 0.3rem;
+  }
+  button {
+    font-size: 0.97rem;
+    padding: 0.6rem 1rem;
+  }
+  .summary-box {
+    font-size: 0.97rem;
+    padding: 0.7rem;
+  }
+  .note-card {
+    font-size: 0.97rem;
+    padding: 0.7rem;
+  }
+  .note-raw,
+  .note-beautified,
+  .note-summary {
+    font-size: 0.97rem;
+    padding: 0.5rem;
   }
 }
