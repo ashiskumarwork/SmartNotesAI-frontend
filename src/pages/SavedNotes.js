@@ -3,7 +3,8 @@
  * Page to display all saved notes from the backend.
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 /**
  * SavedNotesPage
@@ -13,6 +14,7 @@ function SavedNotesPage() {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { token } = useContext(AuthContext);
 
   // Fetch notes from backend on mount
   useEffect(() => {
@@ -21,21 +23,36 @@ function SavedNotesPage() {
       setError("");
       try {
         const res = await fetch(
-          `${process.env.REACT_APP_BACKEND_URL}/api/notes`
+          `${process.env.REACT_APP_BACKEND_URL}/api/notes`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
-        const data = await res.json();
-        if (data.success) {
-          setNotes(data.data);
+        if (res.status === 401) {
+          setError("You must be logged in to view your saved notes.");
+          setNotes([]);
         } else {
-          setError(data.message || "Failed to fetch notes.");
+          const data = await res.json();
+          if (data.success) {
+            setNotes(data.data);
+          } else {
+            setError(data.message || "Failed to fetch notes.");
+          }
         }
       } catch (err) {
         setError("Error connecting to backend.");
       }
       setLoading(false);
     };
-    fetchNotes();
-  }, []);
+    if (token) {
+      fetchNotes();
+    } else {
+      setLoading(false);
+      setError("You must be logged in to view your saved notes.");
+    }
+  }, [token]);
 
   return (
     <div
