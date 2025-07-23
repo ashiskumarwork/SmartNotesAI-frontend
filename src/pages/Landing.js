@@ -94,7 +94,7 @@ function Landing() {
         <div style={{ display: "flex", gap: 18, marginTop: 10 }}>
           {user ? (
             <button
-              onClick={() => navigate("/app")}
+              onClick={() => navigate("/dashboard")}
               style={{
                 padding: "0.9rem 2.2rem",
                 background: "linear-gradient(90deg, #2563eb 0%, #60a5fa 100%)",
@@ -108,7 +108,7 @@ function Landing() {
                 transition: "background 0.18s, color 0.18s",
               }}
             >
-              Go to App
+              Go to Dashboard
             </button>
           ) : (
             <>
